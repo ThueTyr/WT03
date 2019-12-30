@@ -14,5 +14,7 @@ namespace WT03.Data
         {
         }
         public DbSet<UserData> UserDatas { get; set; }
+
+        public DbSet<BeeCountModel> BeeCounts { set; get; }
     }
 }

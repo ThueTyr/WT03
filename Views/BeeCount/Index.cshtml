@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WT03.Models.BeeCountModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BeeHiveName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfMidgets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ObservationDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeeHiveName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfMidgets)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObservationDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BeeCountModelId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BeeCountModelId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BeeCountModelId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WT03.Data;
 
 namespace WT03.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191230222349_UserDataDbSet1")]
+    partial class UserDataDbSet1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -187,29 +189,6 @@ namespace WT03.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("WT03.Models.BeeCountModel", b =>
-                {
-                    b.Property<long>("BeeCountModelId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("BeeHiveName")
-                        .IsRequired()
-                        .HasMaxLength(18);
-
-                    b.Property<string>("Comments");
-
-                    b.Property<DateTime>("CountTime");
-
-                    b.Property<int>("NumberOfMidgets");
-
-                    b.Property<int>("ObservationDays");
-
-                    b.HasKey("BeeCountModelId");
-
-                    b.ToTable("BeeCounts");
                 });
 
             modelBuilder.Entity("WT03.Models.UserData", b =>

@@ -1,0 +1,53 @@
+﻿@model WT03.Models.BeeCountModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>BeeCountModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BeeHiveName" class="control-label"></label>
+                <input asp-for="BeeHiveName" class="form-control" />
+                <span asp-validation-for="BeeHiveName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountTime" class="control-label"></label>
+                <input asp-for="CountTime" class="form-control" />
+                <span asp-validation-for="CountTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfMidgets" class="control-label"></label>
+                <input asp-for="NumberOfMidgets" class="form-control" />
+                <span asp-validation-for="NumberOfMidgets" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ObservationDays" class="control-label"></label>
+                <input asp-for="ObservationDays" class="form-control" />
+                <span asp-validation-for="ObservationDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comments" class="control-label"></label>
+                <input asp-for="Comments" class="form-control" />
+                <span asp-validation-for="Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
