@@ -23,9 +23,12 @@ namespace WT03.Controllers
         }
 
         // GET: BeeCount
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([FromServices]UserManager<UserData> userManager)
         {
-            return View(await _context.BeeCounts.ToListAsync());
+            var currentUser = await userManager.GetUserAsync(User);
+            return View(await _context.BeeCounts.Where(b => b.Author == currentUser)
+                .ToListAsync());
+            //return View(await _context.BeeCounts.ToListAsync());
         }
 
         // GET: BeeCount/Details/5
