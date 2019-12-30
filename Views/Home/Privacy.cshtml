@@ -1,6 +1,17 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "JS Demo";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="text-center">
+    <h1>Here are some JavaScript examples</h1>
+    <p> Edit this page in views->home->index</p>
+    <h2>Mouseover picture to get an alert</h2>
+    <figure id="mouseoverimg">
+        <img src="images/MouseOver.bmp" />
+    </figure>
+</div>
+
+@section Scripts {
+    <script src="~/js/JSDemo.js" asp-append-version="true"></script>
+}
