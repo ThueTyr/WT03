@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WT03.Data;
 
 namespace WT03.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191230223825_AddDataId")]
+    partial class AddDataId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -195,8 +197,6 @@ namespace WT03.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AuthorId");
-
                     b.Property<string>("BeeHiveName")
                         .IsRequired()
                         .HasMaxLength(18);
@@ -212,8 +212,6 @@ namespace WT03.Data.Migrations
                     b.Property<int>("ObservationDays");
 
                     b.HasKey("BeeCountModelId");
-
-                    b.HasIndex("AuthorId");
 
                     b.ToTable("BeeCounts");
                 });
@@ -285,13 +283,6 @@ namespace WT03.Data.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WT03.Models.BeeCountModel", b =>
-                {
-                    b.HasOne("WT03.Models.UserData", "Author")
-                        .WithMany("BeeCounts")
-                        .HasForeignKey("AuthorId");
                 });
 #pragma warning restore 612, 618
         }

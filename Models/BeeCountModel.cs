@@ -10,6 +10,7 @@ namespace WT03.Models
     {
         public long BeeCountModelId { get; set; }
 
+        public long IdOfAuthor { get; set; }
         [Required]
         [MaxLength(18)]
         public string BeeHiveName { get; set; }
@@ -22,5 +23,7 @@ namespace WT03.Models
         public int ObservationDays { get; set; }
         
         public string Comments { get; set; }
+
+        public UserData Author { get; set; }
     }
 }

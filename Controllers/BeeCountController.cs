@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -56,10 +57,12 @@ namespace WT03.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BeeHiveName,CountTime,NumberOfMidgets,ObservationDays,Comments")] BeeCountModel beeCountModel)
+        public async Task<IActionResult> Create([Bind("BeeHiveName,CountTime,NumberOfMidgets,ObservationDays,Comments")] BeeCountModel beeCountModel, [FromServices]UserManager<UserData> userManager)
         {
             if (ModelState.IsValid)
             {
+                beeCountModel.Author = await userManager.GetUserAsync(User);
+                beeCountModel.IdOfAuthor = beeCountModel.Author.UserDataId;
                 _context.Add(beeCountModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

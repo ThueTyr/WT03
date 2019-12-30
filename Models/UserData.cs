@@ -9,6 +9,7 @@ namespace WT03.Models
 {
     public class UserData: IdentityUser
     {
+        public long UserDataId { get; set; }
         [PersonalData]
         public string FirstName { get; set; }
         [PersonalData]
@@ -26,5 +27,8 @@ namespace WT03.Models
 
         [PersonalData]
         public string City { get; set; }
+
+        [PersonalData]
+        public ICollection<BeeCountModel> BeeCounts { get; set; }
     }
 }
